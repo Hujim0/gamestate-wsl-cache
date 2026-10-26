@@ -1,0 +1,13 @@
+[Unit]
+Description=Cache Windows game state and dispatch transitions
+
+[Service]
+ExecStart=%h/.local/bin/gamestatus /mnt/c/Users/WINDOWS_USER/AppData/Local/GameModeActivator/gamestatus %h/.gamestatus --hook %h/.config/gamestatus/on-change.sh
+Restart=on-failure
+RestartSec=5
+UMask=0077
+KillMode=control-group
+TimeoutStopSec=5
+
+[Install]
+WantedBy=default.target
